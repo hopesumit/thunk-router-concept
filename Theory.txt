@@ -1,0 +1,129 @@
+Thunk: 
+
+Redux-thunk: 
+
+thunk => nothing but a action creator which returns a function
+
+
+
+Steps to use thunk: 
+1) install - npm install -s redux-thunk
+
+
+2) 
+
+
+
+API call:
+
+request , response
+
+GET (read), POST(writing) - often used
+
+PUT (update), DELETE(delete) - Not often
+
+
+
+
+
+
+const get_Data_started = () => {
+    
+	return ({
+       
+		 type: GET_DATA_STARTED,
+   
+		  })
+
+		}
+
+
+
+
+const get_Data_success = () => {
+  
+  return ({
+       
+	   type: GET_DATA_SUCCESS,
+  
+	  })
+
+	}
+
+
+
+
+ const get_Data_error = () => {
+   
+	 return ({
+       
+		   type: GET_DATA_ERROR,
+  
+		  })
+
+		}
+
+
+
+
+const add_Data = (data) => {
+    
+	return ({
+       
+		 type: ADD_DATA,
+       
+		 data: data
+    
+		})
+
+ 	    }
+
+
+
+
+API call 3 states => 
+  
+  request made
+    
+  Success response
+    
+  Error response 
+
+
+
+
+const getDataThunk = () => {
+   
+	 return function(dispatch){
+       
+	   dispatch(get_Data_started());
+       
+	   axios.post("http://5ad1ea3580716500149f238f.mockapi.io/tasks",{
+           
+		 "name":"sumit",
+           
+		 "age":22
+       
+		 }).then((response) => {
+            
+			dispatch(get_Data_success())
+       
+		 }).catch((error) => {
+           
+			 dispatch(get_Data_error())
+       
+		 })
+    
+	     }
+
+	    }
+
+
+
+
+
+Router should encapsule whole app but within provider
+
+Link is like href
+
+Switch is optional, but if u give, it can load default component when no url is matching
